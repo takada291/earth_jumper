@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Earth Jumper v1.3</title>
+    <title>Earth Jumper</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body { background-color: #f0f2f5; font-family: "Helvetica Neue", Arial, sans-serif; padding: 20px; }
@@ -48,52 +48,53 @@
 
 <div class="container">
     <div class="main-card">
-        <h3 class="header-title">🌏 撮影場所へジャンプ！ v1.3</h3>
-        <p class="text-center text-muted">電子黒板の写真に書かれた<br>緯度・経度・方位を入力してください</p>
+        <h3 class="header-title">🌏 撮影場所へジャンプ！</h3>
+        <p class="text-center text-muted">緯度・経度・方位（撮影方向）を入力してください。<br>グーグルアースでは画面上部が’撮影方向’になります。</p>
 
         <div class="mb-3">
-            <label class="form-label fw-bold">緯度 (Latitude)</label>
+            <label class="form-label fw-bold">緯度</label>
             <div class="input-group">
                 <span class="input-group-text">N</span>
                 <input type="number" id="latInput" class="form-control" placeholder="例: 35.12345" step="0.00001">
             </div>
-            <div class="help-text">※黒板の「N」の後ろの数字</div>
+            <div class="help-text">※’度表記’で入力</div>
         </div>
 
         <div class="mb-3">
-            <label class="form-label fw-bold">経度 (Longitude)</label>
+            <label class="form-label fw-bold">経度</label>
             <div class="input-group">
                 <span class="input-group-text">E</span>
                 <input type="number" id="lonInput" class="form-control" placeholder="例: 136.12345" step="0.00001">
             </div>
-            <div class="help-text">※黒板の「E」の後ろの数字</div>
+            <div class="help-text">※’度表記’で入力</div>
         </div>
 
         <div class="mb-3">
-            <label class="form-label fw-bold">方位 (Heading)</label>
+            <label class="form-label fw-bold">方位（撮影方向）</label>
             <div class="input-group">
                 <span class="input-group-text">角度</span>
                 <input type="number" id="headInput" class="form-control" placeholder="例: 90" step="1">
             </div>
-            <div class="help-text">※黒板の「( )」の中の数字 (0〜360)</div>
+            <div class="help-text">※必須ではありません</div>
         </div>
 
         <hr class="my-4">
-
+        
+        <!--
         <button class="btn-maps-3d" onclick="jumpToMaps3D()">
             🚁 Google Maps (3D航空写真・ピンあり)
         </button>
+        -->
 
-        <button class="btn-earth" onclick="jumpToEarth()">
-            🚀 Google Earth (3D・景観のみ)
-        </button>
-        
         <button class="btn-maps" onclick="jumpToMaps()">
             🗺️ Google Maps (2D地図・ピンあり)
         </button>
+        
+        <button class="btn-earth" onclick="jumpToEarth()">
+            🚀 Google Earth (3D地図・ピンなし)
+        </button>      
 
         <div class="help-text text-center mt-3" style="font-size: 0.75rem;">
-            ※スマホブラウザの場合、仕様により3Dにならず真上からの表示になることがあります。
         </div>
     </div>
 </div>
@@ -149,3 +150,4 @@
 
 </body>
 </html>
+
