@@ -35,10 +35,19 @@
         .btn-maps {
             background-color: #34a853; color: white; font-weight: bold;
             width: 100%; padding: 12px; font-size: 1.1rem;
-            border-radius: 10px; border: none;
+            border-radius: 10px; border: none; margin-bottom: 10px; /* 余白を追加 */
             box-shadow: 0 4px 6px rgba(0,0,0,0.2);
         }
         .btn-maps:hover { background-color: #2d8e47; color: white; transform: translateY(-2px); }
+
+        /* ★追加★ 林小班図ボタンのスタイル */
+        .btn-rinpan {
+            background-color: #20c997; color: white; font-weight: bold;
+            width: 100%; padding: 12px; font-size: 1.1rem;
+            border-radius: 10px; border: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+        .btn-rinpan:hover { background-color: #1aa179; color: white; transform: translateY(-2px); }
         
         .input-group-text { width: 60px; justify-content: center; background-color: #e9ecef; font-weight: bold; }
         .help-text { font-size: 0.85rem; color: #666; margin-top: 5px; }
@@ -79,17 +88,16 @@
         </div>
 
         <hr class="my-4">
-        <!--
-        <button class="btn-maps-3d" onclick="jumpToMaps3D()">
-            🚁 Google Maps (3D航空写真・ピンあり)
-        </button>
-        -->
         <button class="btn-earth" onclick="jumpToEarth()">
             🚀 Google Earth (3D地図・ピンなし)
         </button>
         
         <button class="btn-maps" onclick="jumpToMaps()">
             🗺️ Google Maps (2D地図・ピンあり)
+        </button>
+
+        <button class="btn-rinpan" onclick="jumpToRinpan()">
+            🌲 林小班図アプリ (全国林班図・ピンあり)
         </button>
         
         <div class="help-text text-center mt-3" style="font-size: 0.75rem;">
@@ -109,7 +117,6 @@
             return;
         }
 
-        // 公式のGoogle Maps URLフォーマットに修正
         const url = `https://www.google.com/maps/place/${lat},${lon}/@${lat},${lon},250a,75y,${heading}h/data=!3m1!1e3`;
         window.open(url, '_blank');
     }
@@ -125,7 +132,6 @@
             return;
         }
 
-        // 検索パラメータを入れてピンを落とす試み
         const url = `https://earth.google.com/web/search/${lat},${lon}/@${lat},${lon},150a,200d,75y,${heading}h,0t,0r`;
         window.open(url, '_blank');
     }
@@ -140,15 +146,27 @@
             return;
         }
 
-        // 確実にピンを立てるための標準的なMapsのURLフォーマット
         const url = `https://www.google.com/maps/place/${lat},${lon}/@${lat},${lon},18z`;
+        window.open(url, '_blank');
+    }
+
+    // ★追加★ 4. 林小班図アプリへジャンプ
+    function jumpToRinpan() {
+        const lat = document.getElementById('latInput').value;
+        const lon = document.getElementById('lonInput').value;
+
+        if (!lat || !lon) {
+            alert("緯度と経度を入力してください！");
+            return;
+        }
+
+        // 林小班図アプリ（index.html等）へURLパラメータとして緯度経度を渡す
+        // ※「Earth Jumper」と「林小班図」が同じサーバー(GitHub)の同じフォルダにある前提の書き方です
+        // もしURLが違う場合は、`https://takada291.github.io/アプリのパス/?lat=${lat}&lon=${lon}` のように書き換えてください
+        const url = `index.html?lat=${lat}&lon=${lon}`;
         window.open(url, '_blank');
     }
 </script>
 
 </body>
 </html>
-
-
-
-
