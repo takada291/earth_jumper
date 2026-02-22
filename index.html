@@ -154,6 +154,7 @@
     }
 
     // ★追加★ 4. 地図切出アプリへのジャンプ処理
+    // ★修正版★ 4. 地図切出アプリへのジャンプ処理
     function jumpToMapCut() {
         const lat = document.getElementById('latInput').value;
         const lon = document.getElementById('lonInput').value;
@@ -163,14 +164,21 @@
             return;
         }
 
-        // ▼注意▼ 
-        // 飛び先の「地図切出アプリ」のファイル名が index.html の場合の書き方です。
-        // もし map_cut.html などの別名で保存・公開している場合は、以下の "index.html" を書き換えてください。
-        // （別サーバーの場合は https://～ から始まるフルパスを記述してください）
-        const url = `index.html?lat=${lat}&lon=${lon}`;
+        // ▼大修正ポイント▼
+        // 自分自身に飛ばないよう、ここに「地図切出アプリ」の【実際の公開URL】を指定します。
+        // （以下の https://～ の部分を、高田さんの実際の地図切出アプリのURLに書き換えてください）
+        
+        const mapCutUrl = "https://github.com/takada291/map-clip/";
+        
+        // ※もし、撮影場所アプリと同じフォルダ内に「map_cut.html」などの別名で保存している場合は、
+        // const mapCutUrl = "map_cut.html"; 
+        // のようにファイル名だけを指定します。
+
+        const url = `${mapCutUrl}?lat=${lat}&lon=${lon}`;
         window.open(url, '_blank');
     }
 </script>
 
 </body>
 </html>
+
